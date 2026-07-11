@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritu Raj | Data Science Portfolio</title>
+    <!-- Modern Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Unique Light Yellowish Theme Colors */
+            --bg-color: #fdfaf3;
+            --bg-gradient-start: #fdfaf3;
+            --bg-gradient-end: #e5dcc7;
+
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(202, 138, 4, 0.2);
+
+            --accent-primary: #ca8a04;
+            --accent-glow: rgba(202, 138, 4, 0.15);
+            --accent-secondary: #ea580c;
+
+            --text-main: #1e1b18;
+            --text-muted: #5e544d;
+            --text-darker: #3b3530;
+
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Abstract Background Glows */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(202, 138, 4, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-darker);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .hero-socials {
+            display: flex;
+            gap: 36px;
+            margin-top: 32px;
+        }
+
+        .hero-socials a {
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-socials a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-4px) scale(1.5);
+        }
+
+        .hero-socials svg {
+            width: 44px;
+            height: 44px;
+            fill: currentColor;
+        }
+
+        .tagline {
+            color: var(--accent-primary);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 24px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(202, 138, 4, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(202, 138, 4, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism Sections */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--glass-border), transparent);
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About / Education Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .info-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .info-meta {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .list-items {
+            list-style: none;
+        }
+
+        .list-items li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-darker);
+            font-size: 15px;
+        }
+
+        .list-items li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(202, 138, 4, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(202, 138, 4, 0.2);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .tag:hover {
+            background: rgba(202, 138, 4, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .project-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Certifications */
+        .cert-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .cert-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+        }
+
+        .cert-info h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .cert-meta {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SVGs */
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Glows -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="reveal active">
+            <div class="logo">RR.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#certs">Certificates</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero reveal active">
+            <span class="tagline">Data Science Student @ IIT Madras</span>
+            <h1>Hi, I'm Ritu Raj.</h1>
+            <p>Welcome to my personal portfolio! I am passionate about machine learning, predictive modeling, and
+                uncovering actionable insights from complex data.</p>
+
+            <div class="btn-group">
+                <a href="https://drive.google.com/file/d/1JDILLq2BsNS8MtCMcac6bb1S0Knfh6zT/view?usp=sharing"
+                    target="_blank" class="btn btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                    View Resume
+                </a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+            </div>
+
+            <div class="hero-socials">
+                <a href="https://github.com/riturajprofile" target="_blank" title="GitHub">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/riturajprofile" target="_blank" title="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                </a>
+                <a href="https://kaggle.com/riturajprofile" target="_blank" title="Kaggle">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.089-1.448 1.474v4.588c0 .178-.093.276-.281.276H5.305c-.198 0-.292-.098-.292-.276V.268c0-.188.094-.282.292-.282h2.701c.188 0 .281.094.281.282v15.437L13.71 4.96c.094-.105.234-.164.41-.164h3.314c.164 0 .258.059.258.176 0 .035-.012.082-.035.14l-6.31 6.55 7.406 12.021c.047.071.07.129.07.176z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- About & Education -->
+        <section id="about" class="reveal">
+            <div class="section-title">Background</div>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div class="info-label">About Me</div>
+                    <div class="info-title">Turning data into insights.</div>
+                    <p style="color: var(--text-darker); text-align: justify;">
+                        Data Science student at IIT Madras with experience in machine learning, predictive modeling, and
+                        data visualization. Skilled in Python, SQL, Excel, and Scikit-learn, with hands-on experience
+                        building end-to-end ML pipelines and competing on Kaggle. Seeking a Data Analyst or Data Science
+                        internship to apply analytical skills to real-world business problems.
+                    </p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="info-label">Education</div>
+                    <div class="info-title">BS in Data Science & Applications</div>
+                    <div class="info-meta">Indian Institute of Technology, Madras (Expected Aug 2027)</div>
+                    <ul class="list-items">
+                        <li>Completed Foundational Diploma in Programming, 2025</li>
+                        <li>CGPA: 7.8 / 10</li>
+                        <li>HSBC Scholarship Recipient (2026)</li>
+                    </ul>
+                    <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+                        <strong>Coursework:</strong> Statistics, Machine Learning, Database Management, Data
+                        Visualization
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills" class="reveal">
+            <div class="section-title">Technical Skills</div>
+            <div class="glass-card skills-grid">
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">CatBoost</span>
+                        <span class="tag">LightGBM</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Web & Databases</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLAlchemy</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Kaggle</span>
+                        <span class="tag">Jupyter</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="reveal">
+            <div class="section-title">Featured Projects</div>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="glass-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="info-label">Full-Stack Application</div>
+                            <div class="info-title">Hospital Management System (HMS)</div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/riturajprofile/HMS" target="_blank" title="GitHub Repo">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.45-1.15-1.11-1.46-1.11-1.46c-.9-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-items">
+                        <li>Developed a robust Hospital Management System using Flask, SQLAlchemy 2.0, Vue 3, SQLite,
+                            Redis, and JWT Authentication.</li>
+                        <li>Implemented secure role-based access control for Admin, Doctor, Patient, and Receptionist
+                            portals.</li>
+                        <li>Designed comprehensive relational database schema using SQLAlchemy ORM.</li>
+                        <li>Integrated Celery and Redis to handle asynchronous background task processing smoothly.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="info-label">Kaggle Competition</div>
+                            <div class="info-title">Heavy Equipment Sale Price Prediction</div>
+                        </div>
+                    </div>
+                    <ul class="list-items">
+                        <li>Built an advanced regression pipeline to predict used heavy-equipment auction prices.</li>
+                        <li>Engineered a log-transformed target with robust target encoding strategies to handle
+                            high-cardinality categorical features effectively.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="info-label">Kaggle Competition</div>
+                            <div class="info-title">Mushroom Edibility Classification</div>
+                        </div>
+                    </div>
+                    <ul class="list-items">
+                        <li>Cleaned and preprocessed complex categorical datasets using various encoding techniques.
+                        </li>
+                        <li>Evaluated and compared the performance of Logistic Regression, Random Forest, and Gradient
+                            Boosting classifiers.</li>
+                        <li>Analyzed models using comprehensive metrics including Accuracy, Precision, Recall, F1-score,
+                            and Confusion Matrix analysis.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certs" class="reveal">
+            <div class="section-title">Certifications</div>
+
+            <div class="glass-card cert-card">
+                <div class="cert-info">
+                    <h3>Advanced Certificate in Machine Learning and Data Science</h3>
+                    <div class="cert-meta">Indian Institute of Technology, Madras | January 2026</div>
+                </div>
+                <a href="https://drive.google.com/file/d/14qSY3GqATi1GKnQU6p8nwnVAamvz811S/view" target="_blank"
+                    class="btn btn-secondary">View Certificate (Drive)</a>
+            </div>
+
+            <div class="glass-card cert-card">
+                <div class="cert-info">
+                    <h3>AWS Academy Graduate – Cloud Foundations</h3>
+                    <div class="cert-meta">Amazon Web Services | May 2026</div>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://www.credly.com/go/6ZOYgrWC" target="_blank" class="btn btn-secondary"
+                        style="padding: 10px 20px; font-size: 13px;">View Credly Badge</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="reveal">
+            <div class="social-links">
+                <a href="https://github.com/riturajprofile" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/riturajprofile" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://kaggle.com/riturajprofile" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.089-1.448 1.474v4.588c0 .178-.093.276-.281.276H5.305c-.198 0-.292-.098-.292-.276V.268c0-.188.094-.282.292-.282h2.701c.188 0 .281.094.281.282v15.437L13.71 4.96c.094-.105.234-.164.41-.164h3.314c.164 0 .258.059.258.176 0 .035-.012.082-.035.14l-6.31 6.55 7.406 12.021c.047.071.07.129.07.176z" />
+                    </svg>
+                    Kaggle
+                </a>
+                <a href="https://riturajprofile.in" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-2.95-.45-5.2-2.58-6.13-5.43h4.63zm0-7.43H3.25c.19-2.73 1.95-5 4.54-5.93a12.7 12.7 0 0 1-1.39 5.93zm2-5.83c1.7 1.05 2.94 2.82 3.44 4.83h-4.69c.12-1.74.52-3.41 1.25-4.83zm0 7.83h4.69c-.5 2-1.74 3.78-3.44 4.83a12.42 12.42 0 0 1-1.25-4.83zm2.66-9.15a8 8 0 0 1 2.21 4.15h-3.81a10.95 10.95 0 0 0-1.4-4.15zM17.13 19a10.95 10.95 0 0 0 1.4-4.15h3.81a8 8 0 0 1-2.21 4.15z" />
+                    </svg>
+                    Website
+                </a>
+                <a href="mailto:riturajprofile.me@gmail.com">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    Email Me
+                </a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 14px;">© 2026 Ritu Raj. Hosted via local static file.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            setTimeout(revealOnScroll, 100);
+        });
+    </script>
+</body>
+
+</html>
