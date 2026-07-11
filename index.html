@@ -128,11 +128,32 @@
         /* Hero Section */
         .hero {
             min-height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             padding: 60px 0 40px;
             position: relative;
+        }
+
+        .hero-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-row {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .hero-content .btn-group,
+            .hero-content .hero-socials {
+                justify-content: center;
+            }
         }
 
         .hero-socials {
@@ -455,6 +476,27 @@
             transform: translateY(0);
         }
 
+        /* Profile Picture */
+        .profile-pic {
+            width: 250px;
+            height: 350px;
+            align-self: stretch;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background-image: linear-gradient(var(--bg-color), var(--bg-color)), linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: 0 6px 25px rgba(202, 138, 4, 0.25);
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(202, 138, 4, 0.4);
+        }
+
         /* SVGs */
         .icon {
             width: 20px;
@@ -483,41 +525,48 @@
 
         <!-- Hero Section -->
         <section class="hero reveal active">
-            <span class="tagline">Data Science Student @ IIT Madras</span>
-            <h1>Hi, I'm Ritu Raj.</h1>
-            <p>Welcome to my personal portfolio! I am passionate about machine learning, predictive modeling, and
-                uncovering actionable insights from complex data.</p>
+            <div class="hero-row">
+                <div class="hero-content">
+                    <span class="tagline">Data Science Student @ IIT Madras</span>
+                    <h1>Hi, I'm Ritu Raj.</h1>
+                    <p>Welcome to my personal portfolio! I am passionate about machine learning, predictive modeling,
+                        and
+                        uncovering actionable insights from complex data.</p>
 
-            <div class="btn-group">
-                <a href="https://drive.google.com/file/d/1JDILLq2BsNS8MtCMcac6bb1S0Knfh6zT/view?usp=sharing"
-                    target="_blank" class="btn btn-primary">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-                    </svg>
-                    View Resume
-                </a>
-                <a href="#projects" class="btn btn-secondary">View My Work</a>
-            </div>
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1JDILLq2BsNS8MtCMcac6bb1S0Knfh6zT/view?usp=sharing"
+                            target="_blank" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                            </svg>
+                            View Resume
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">View My Work</a>
+                    </div>
 
-            <div class="hero-socials">
-                <a href="https://github.com/riturajprofile" target="_blank" title="GitHub">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/riturajprofile" target="_blank" title="LinkedIn">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                </a>
-                <a href="https://kaggle.com/riturajprofile" target="_blank" title="Kaggle">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.089-1.448 1.474v4.588c0 .178-.093.276-.281.276H5.305c-.198 0-.292-.098-.292-.276V.268c0-.188.094-.282.292-.282h2.701c.188 0 .281.094.281.282v15.437L13.71 4.96c.094-.105.234-.164.41-.164h3.314c.164 0 .258.059.258.176 0 .035-.012.082-.035.14l-6.31 6.55 7.406 12.021c.047.071.07.129.07.176z" />
-                    </svg>
-                </a>
+                    <div class="hero-socials">
+                        <a href="https://github.com/riturajprofile" target="_blank" title="GitHub">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/riturajprofile" target="_blank" title="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="https://kaggle.com/riturajprofile" target="_blank" title="Kaggle">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.089-1.448 1.474v4.588c0 .178-.093.276-.281.276H5.305c-.198 0-.292-.098-.292-.276V.268c0-.188.094-.282.292-.282h2.701c.188 0 .281.094.281.282v15.437L13.71 4.96c.094-.105.234-.164.41-.164h3.314c.164 0 .258.059.258.176 0 .035-.012.082-.035.14l-6.31 6.55 7.406 12.021c.047.071.07.129.07.176z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <img src="https://github.com/riturajprofile.png" alt="Ritu Raj" class="profile-pic"
+                    id="hero-profile-pic">
             </div>
         </section>
 
