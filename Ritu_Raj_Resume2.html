@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritu Raj - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2b6cb0;
+            --accent: #3182ce;
+            --accent-soft: #ebf4ff;
+            --text-dark: #1a202c;
+            --text-medium: #2d3748;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --bg-white: #ffffff;
+            --bg-light: #f7fafc;
+            --gradient-start: #1a365d;
+            --gradient-end: #2b6cb0;
+            --link-color: #2b6cb0;
+            --section-gap: 14px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background: #e2e8f0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== PAGE SETUP ===== */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: var(--bg-white);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-1 {
+            padding: 0;
+        }
+
+        .page-2, .page-3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        /* ===== PAGE 1: RESUME ===== */
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: white;
+            padding: 28px 36px 22px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #63b3ed, #4299e1, #3182ce, #2b6cb0);
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .header-contact {
+            font-size: 11px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+        }
+
+        .header-contact a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-contact a:hover {
+            color: #bee3f8;
+        }
+
+        .header-contact .separator {
+            margin: 0 6px;
+            opacity: 0.5;
+        }
+
+        /* Content area */
+        .content {
+            padding: 20px 36px 28px;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 10px;
+            margin-top: var(--section-gap);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .section-title .icon {
+            font-size: 14px;
+        }
+
+        /* About Me */
+        .about-text {
+            font-size: 11.5px;
+            color: var(--text-medium);
+            line-height: 1.65;
+            text-align: justify;
+            background: var(--accent-soft);
+            padding: 12px 16px;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Education */
+        .edu-block {
+            margin-bottom: 4px;
+        }
+
+        .edu-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .edu-institution {
+            font-size: 11px;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+
+        .edu-details {
+            font-size: 10.5px;
+            color: var(--text-light);
+            padding-left: 14px;
+        }
+
+        .edu-details li {
+            margin-bottom: 1px;
+            list-style: none;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .edu-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 10px;
+        }
+
+        .relevant-coursework {
+            font-size: 10.5px;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+
+        .relevant-coursework strong {
+            color: var(--text-medium);
+        }
+
+        /* Technical Skills Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10.5px;
+        }
+
+        .skills-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skills-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .skills-table td {
+            padding: 5px 8px;
+            vertical-align: top;
+        }
+
+        .skills-table td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            width: 130px;
+            white-space: nowrap;
+        }
+
+        .skills-table td:last-child {
+            color: var(--text-medium);
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 10px;
+        }
+
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: inline;
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 1px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .project-link {
+            font-size: 10px;
+            color: var(--link-color);
+            text-decoration: none;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-details {
+            font-size: 10.5px;
+            color: var(--text-light);
+            padding-left: 14px;
+            margin-top: 2px;
+        }
+
+        .project-details li {
+            margin-bottom: 1px;
+            list-style: none;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .project-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Certifications */
+        .cert-list {
+            font-size: 10.5px;
+            color: var(--text-medium);
+            padding-left: 14px;
+        }
+
+        .cert-list li {
+            margin-bottom: 3px;
+            list-style: none;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .cert-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 8px;
+            top: 2px;
+        }
+
+        .cert-list a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cert-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Languages */
+        .languages {
+            font-size: 11px;
+            color: var(--text-medium);
+        }
+
+        .languages .lang-tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            padding: 3px 12px;
+            border-radius: 14px;
+            margin-right: 8px;
+            font-size: 10.5px;
+        }
+
+        .languages .lang-level {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-left: 3px;
+        }
+
+        /* ===== PAGE 2 & 3: CERTIFICATES ===== */
+        .certificate-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fafbfc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .certificate-frame {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .certificate-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .cert-logo {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cert-institution {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .cert-sub-institution {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .cert-body-text {
+            font-size: 13px;
+            color: var(--text-medium);
+            margin-bottom: 8px;
+        }
+
+        .cert-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .cert-achievement {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .cert-achievement strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .cert-details {
+            margin-top: 20px;
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .cert-details a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .cert-details a:hover {
+            text-decoration: underline;
+        }
+
+        .cert-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 16px auto;
+        }
+
+        /* ===== PAGE NUMBERS ===== */
+        .page-number {
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                width: 210mm;
+                height: 297mm;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* ===== PRINT BUTTON ===== */
+        .print-banner {
+            text-align: center;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+
+        .print-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            margin-left: 12px;
+            transition: all 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #bee3f8;
+            transform: translateY(-1px);
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Banner (hidden in print) -->
+    <div class="print-banner no-print">
+        📄 Ritu Raj Resume — Use <strong>Ctrl+P</strong> or click the button to save as PDF
+        <button class="print-btn" onclick="window.print()">🖨️ Save as PDF</button>
+    </div>
+
+    <!-- ==================== PAGE 1: RESUME ==================== -->
+    <div class="page page-1">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Ritu Raj</h1>
+            <div class="header-contact">
+                Patna, India
+                <span class="separator">|</span>
+                +91 9199979823
+                <span class="separator">|</span>
+                <a href="mailto:riturajprofile.me@gmail.com">riturajprofile.me@gmail.com</a>
+                <br>
+                <a href="https://riturajprofile.in" target="_blank">riturajprofile.in</a>
+                <span class="separator">|</span>
+                <a href="https://linkedin.com/in/riturajprofile" target="_blank">linkedin.com/in/riturajprofile</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/riturajprofile" target="_blank">github.com/riturajprofile</a>
+                <span class="separator">|</span>
+                <a href="https://kaggle.com/riturajprofile" target="_blank">kaggle.com/riturajprofile</a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- About Me -->
+            <div class="section-title">
+                <span class="icon">👤</span> About Me
+            </div>
+            <div class="about-text">
+                Data Science student at IIT Madras with experience in machine learning, predictive modeling, and data visualization. Skilled in Python, SQL, Excel, and Scikit-learn, with hands-on experience building end-to-end ML pipelines and competing on Kaggle. Seeking a Data Analyst or Data Science internship to apply analytical skills to real-world business problems.
+            </div>
+
+            <!-- Education & Achievements -->
+            <div class="section-title">
+                <span class="icon">🎓</span> Education & Achievements
+            </div>
+            <div class="edu-block">
+                <div class="edu-title">BS in Data Science and Applications</div>
+                <div class="edu-institution">Indian Institute of Technology, Madras — Expected August 2027</div>
+                <ul class="edu-details">
+                    <li>Completed Foundational Diploma in Programming, 2025</li>
+                    <li>CGPA: 7.8 / 10</li>
+                    <li>HSBC Scholarship Recipient (2026)</li>
+                    <li>Active Kaggle Competitor</li>
+                </ul>
+                <div class="relevant-coursework">
+                    <strong>Relevant Coursework:</strong> Statistics, Machine Learning, Database Management, Data Visualization
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="section-title">
+                <span class="icon">💻</span> Technical Skills
+            </div>
+            <table class="skills-table">
+                <tr>
+                    <td>Languages</td>
+                    <td>Python, Java, SQL</td>
+                </tr>
+                <tr>
+                    <td>Data & ML</td>
+                    <td>Pandas, NumPy, Scikit-learn, XGBoost, CatBoost, LightGBM, Matplotlib, Seaborn</td>
+                </tr>
+                <tr>
+                    <td>Web & Databases</td>
+                    <td>Flask, SQLAlchemy, Vue.js, SQLite, MySQL</td>
+                </tr>
+                <tr>
+                    <td>Tools</td>
+                    <td>Excel, Git, Kaggle, Jupyter Notebook</td>
+                </tr>
+            </table>
+
+            <!-- Projects -->
+            <div class="section-title">
+                <span class="icon">🚀</span> Projects
+            </div>
+
+            <div class="project">
+                <span class="project-title">Heavy Equipment Sale Price Prediction</span>
+                <span class="project-tag">Kaggle Competition</span>
+                <ul class="project-details">
+                    <li>Built a regression pipeline predicting used heavy-equipment auction prices.</li>
+                    <li>Engineered a log-transformed target with target encoding for high-cardinality categorical features.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <span class="project-title">Mushroom Edibility Classification</span>
+                <span class="project-tag">Kaggle Competition</span>
+                <ul class="project-details">
+                    <li>Cleaned and preprocessed categorical features using encoding techniques.</li>
+                    <li>Compared Logistic Regression, Random Forest, and Gradient Boosting classifiers.</li>
+                    <li>Evaluated models using Accuracy, Precision, Recall, F1-score, and Confusion Matrix.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <span class="project-title">Hospital Management System (HMS)</span>
+                <span class="project-tag">Full-Stack Application</span>
+                <a href="https://github.com/riturajprofile/HMS" target="_blank" class="project-link">🔗 github.com/riturajprofile/HMS</a>
+                <ul class="project-details">
+                    <li>Developed a Hospital Management System using Flask, SQLAlchemy 2.0, Vue 3, SQLite, Redis, and JWT Authentication.</li>
+                    <li>Implemented role-based access control for Admin, Doctor, Patient, and Receptionist.</li>
+                    <li>Designed relational database schema with SQLAlchemy ORM.</li>
+                    <li>Integrated Celery and Redis for asynchronous background tasks.</li>
+                </ul>
+            </div>
+
+            <!-- Certifications -->
+            <div class="section-title">
+                <span class="icon">📜</span> Certifications
+            </div>
+            <ul class="cert-list">
+                <li>AWS Academy Graduate – Cloud Foundations, AWS — May 2026 — <a href="https://www.credly.com/go/6ZOYgrWC" target="_blank">View Credential</a></li>
+                <li>Advanced Certificate in Machine Learning and Data Science — January 2026 — <a href="#page2">View Certificate</a></li>
+            </ul>
+
+            <!-- Spoken Languages -->
+            <div class="section-title">
+                <span class="icon">🌐</span> Spoken Languages
+            </div>
+            <div class="languages">
+                <span class="lang-tag">English <span class="lang-level">(Fluent)</span></span>
+                <span class="lang-tag">Hindi <span class="lang-level">(Native)</span></span>
+            </div>
+
+        </div>
+
+        <div class="page-number">Page 1 of 3</div>
+    </div>
+
+    <!-- ==================== PAGE 2: IIT MADRAS CERTIFICATE ==================== -->
+    <div class="page page-2" id="page2" style="padding: 0; display: block;">
+        <img src="file:///home/rituraj/.gemini/antigravity-ide/brain/33a37434-d835-40db-9e92-cabb23f71726/iit_madras_certificate_1783755828064.png" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" alt="IIT Madras Certificate">
+    </div>
+
+    <!-- ==================== PAGE 3: AWS CERTIFICATE ==================== -->
+    <div class="page page-3" id="page3" style="padding: 0; display: block;">
+        <img src="file:///home/rituraj/.gemini/antigravity-ide/brain/33a37434-d835-40db-9e92-cabb23f71726/aws_certificate_1783755925878.png" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" alt="AWS Certificate">
+    </div>
+
+</body>
+</html>
